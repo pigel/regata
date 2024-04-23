@@ -16,7 +16,7 @@
             android:name=".Signup"
             android:exported="false" />
         <activity
-            android:name=".Signup_activity"
+            android:name=".Signup"
             android:exported="false"
             android:theme="@style/Theme.Regata" />
         <activity
