@@ -3,6 +3,7 @@ package com.lifesider7.regata
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -18,7 +19,14 @@ class MainActivity2 : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        var sp = getSharedPreferences("PC", Context.MODE_PRIVATE).edit()
-        sp.putString("TY","9").commit()
+        var sp = getSharedPreferences("PC", Context.MODE_PRIVATE)
+        sp.edit().putString("TY","9").commit()
+        var emailname:TextView = findViewById(R.id.emailname)
+        emailname.text = sp.getString("email", "не загрузилось")
     }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+    }
+
 }

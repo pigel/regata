@@ -1,6 +1,7 @@
 package com.lifesider7.regata
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
@@ -31,7 +32,7 @@ class Signup : AppCompatActivity() {
         var password:TextView = findViewById(password)
         var button:Button = findViewById(R.id.button)
             button.setOnClickListener{
-                if(email.text.isEmpty() || email.text.contains("@"))
+                if(email.text.isEmpty() || !email.text.contains("@"))
                     Toast.makeText(this, "Проверьте email", Toast.LENGTH_LONG).show()
                 else if (password.text.isEmpty() || email.text.length<6)
                     Toast.makeText(this, "Пароль должен быть больше шести символов", Toast.LENGTH_LONG).show()
@@ -47,6 +48,8 @@ class Signup : AppCompatActivity() {
                     db.collection("users")
                         .add(user)
                         .addOnSuccessListener { documentReference ->
+                            sp.putString("email", email.text.toString()).commit()
+                            startActivity(Intent(this, MainActivity2::class.java))
                         }
                         .addOnFailureListener { e ->
                             Toast.makeText(this, "Не получилось", Toast.LENGTH_LONG).show()
