@@ -1,5 +1,6 @@
 package com.lifesider7.regata
 
+import android.content.Context
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
@@ -9,6 +10,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.firebase.Firebase
+import com.google.firebase.firestore.firestore
 import com.lifesider7.regata.R.id.button
 import com.lifesider7.regata.R.id.email
 import com.lifesider7.regata.R.id.password
@@ -23,6 +26,7 @@ class Signup : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        var sp = getSharedPreferences("PC", Context.MODE_PRIVATE).edit()
         var email:TextView = findViewById(email)
         var password:TextView = findViewById(password)
         var button:Button = findViewById(R.id.button)
@@ -33,6 +37,21 @@ class Signup : AppCompatActivity() {
                     Toast.makeText(this, "Пароль должен быть больше шести символов", Toast.LENGTH_LONG).show()
                 else{
                     //code will be here
+                    val db = Firebase.firestore
+                    val user = hashMapOf(
+                        "email" to email.text.toString(),
+                        "password" to password.text.toString()
+                    )
+
+// Add a new document with a generated ID
+                    db.collection("users")
+                        .add(user)
+                        .addOnSuccessListener { documentReference ->
+                        }
+                        .addOnFailureListener { e ->
+                            Toast.makeText(this, "Не получилось", Toast.LENGTH_LONG).show()
+                        }
+
                 }
                 }
 
