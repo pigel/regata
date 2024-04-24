@@ -31,6 +31,18 @@ class Signup : AppCompatActivity() {
         var email:TextView = findViewById(email)
         var password:TextView = findViewById(password)
         var button:Button = findViewById(R.id.button)
+
+
+        var signUp : TextView = findViewById(R.id.textView)
+        signUp.setOnClickListener{
+            var intent = Intent(this,MainActivity::class.java)
+            startActivity(intent)
+        }
+
+
+
+
+
             button.setOnClickListener{
                 if(email.text.isEmpty() || !email.text.contains("@"))
                     Toast.makeText(this, "Проверьте email", Toast.LENGTH_LONG).show()
