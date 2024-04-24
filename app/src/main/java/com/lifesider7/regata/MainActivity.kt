@@ -48,7 +48,7 @@ class MainActivity : AppCompatActivity() {
                     for (document in result) {
                         if(document.getString("email")==email.text)
                             if(document.getString("password")==password.text)
-                                sp.edit().putString("email", email.text.toString()).commit()
+                                sp.edit().putString("email", email.text.toString()).apply()
                         startActivity(Intent(this, MainActivity2::class.java))
 
                     }

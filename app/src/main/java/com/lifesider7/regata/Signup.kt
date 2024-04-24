@@ -60,7 +60,7 @@ class Signup : AppCompatActivity() {
                     db.collection("users")
                         .add(user)
                         .addOnSuccessListener { documentReference ->
-                            sp.putString("email", email.text.toString()).commit()
+                            sp.putString("email", email.text.toString()).apply()
                             startActivity(Intent(this, MainActivity2::class.java))
                         }
                         .addOnFailureListener { e ->
