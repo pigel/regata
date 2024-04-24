@@ -55,7 +55,7 @@ class Signup : AppCompatActivity() {
                         "email" to email.text.toString(),
                         "password" to password.text.toString()
                     )
-
+//test
 // Add a new document with a generated ID
                     db.collection("users")
                         .add(user)
