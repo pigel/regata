@@ -30,6 +30,14 @@ class Signup : AppCompatActivity() {
         var sp = getSharedPreferences("PC", Context.MODE_PRIVATE).edit()
         var email:TextView = findViewById(email)
         var password:TextView = findViewById(password)
+
+        var signIn : TextView = findViewById(R.id.textView)
+        signIn.setOnClickListener{
+            var intent = Intent(this,MainActivity::class.java)
+            startActivity(intent)
+        }
+
+
         var button:Button = findViewById(R.id.button)
             button.setOnClickListener{
                 if(email.text.isEmpty() || !email.text.contains("@"))
@@ -43,6 +51,7 @@ class Signup : AppCompatActivity() {
                         "email" to email.text.toString(),
                         "password" to password.text.toString()
                     )
+
 
 // Add a new document with a generated ID
                     db.collection("users")

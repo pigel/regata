@@ -1,12 +1,13 @@
 <resources>
     <string name="app_name">Regata</string>
-    <string name="email">email</string>
-    <string name="password">password</string>
-    <string name="signin">sign in</string>
-    <string name="signup">sign up</string>
-    <string name="youarenthereup">You arent here. sign up</string>
-    <string name="youarentherein">You arent here. sign in</string>
+    <string name="email">введите email</string>
+    <string name="password">введите пароль</string>
+    <string name="signin">Войти</string>
+    <string name="signup">Регистрация</string>
+    <string name="youarenthereup">Зарегистрироваться</string>
+    <string name="youarentherein">Уже зарегистрированы?</string>
     <string name="sitronics">sitronics</string>
+    <string name="logout">Выйти из аккаунта</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>

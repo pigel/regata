@@ -12,6 +12,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.firebase.Firebase
 import com.google.firebase.firestore.firestore
+import java.util.logging.Handler
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,20 +47,22 @@ class MainActivity : AppCompatActivity() {
                 .get()
                 .addOnSuccessListener { result ->
                     for (document in result) {
-                        if(document.getString("email")==email.text)
-                            if(document.getString("password")==password.text)
-                                sp.edit().putString("email", email.text.toString()).commit()
-                        startActivity(Intent(this, MainActivity2::class.java))
-
+                        if(document.getString("email")==email.text.toString()) {
+                            if (document.getString("password") == password.text.toString()) {
+                                sp.edit().putString("email", email.text.toString()).apply()
+                                startActivity(Intent(this, MainActivity2::class.java))
+                            }
+                            else if (document.getString("password")!=password.text.toString()){
+                                password.text=""
+                            }
+                        }
                     }
                 }
                 .addOnFailureListener { exception ->
                     Toast.makeText(this, "Не получилось. Попробуйте позже", Toast.LENGTH_LONG).show()
-                }}
+                }
 
+            }
         }
-
-
     }
-//    stop
 }
